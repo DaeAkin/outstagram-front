@@ -1,9 +1,13 @@
 <template>
   <div id="home">
-    <slider/>
+    
     <div class="main">
       <div class="wrap">
-        <div class="iphone"></div>
+        <div class="iphone">
+          <div class="change-image">
+          <Silder/>
+          </div>
+        </div>
         <div class="login">
           <form class="login-form" action>
             <div class="form-header">
@@ -23,7 +27,7 @@
             </div>
             <div class="form-footer">
               계정이 없으신가요?
-              <a href="#">가입하기</a>
+           <router-link :to="{name : 'register'}">가입하기</router-link>
             </div>
             <div class="form-footer">
               비밀번호를 잊으셨나요?
@@ -49,6 +53,10 @@ export default {
 
 
 <style scoped>
+.change-image {
+    margin: 99px 0 0 151px;
+    position: relative;
+}
 #home {
   width: 100%;
   margin: 40px 0 0;
@@ -57,7 +65,6 @@ export default {
   background-position: 0 0;
   background-size: 454px 618px;
   width: 464px;
-  /* background-color: blue; */
   background-image: url("../assets/iphone.png");
   background-repeat: no-repeat;
   height: 618px;
