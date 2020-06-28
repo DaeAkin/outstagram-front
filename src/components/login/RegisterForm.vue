@@ -7,21 +7,21 @@
         </div>
         <!--Email Input-->
         <div class="form-group">
-          <input type="email" class="form-input" placeholder="이메일" />
+          <input type="email" class="form-input" placeholder="이메일" v-model="email" />
         </div>
         <div class="form-group">
-          <input type="text" class="form-input" placeholder="닉네임" />
+          <input type="text" class="form-input" placeholder="닉네임" v-model="nickname"/>
         </div>
         <!--Password Input-->
         <div class="form-group">
-          <input type="password" class="form-input" placeholder="비밀번호" />
+          <input type="password"  class="form-input" placeholder="비밀번호" v-model="password" />
         </div>
         <div class="form-group">
-          <input type="password" class="form-input" placeholder="비밀번호" />
+          <input type="password" class="form-input" placeholder="비밀번호 재입력" />
         </div>
         <!--Login Button-->
         <div class="form-group">
-          <button class="form-button" type="submit">가입하기</button>
+          <button disabled class="form-button" type="text">가입하기</button>
         </div>
       </form>
     </div>
@@ -30,7 +30,15 @@
 
 <script>
 export default {
-  name: "register-form"
+  name: "register-form",
+  data() {
+    return {
+      email : '',
+      nickname : '',
+      password : '',
+
+    }
+  }
 };
 </script>
 
@@ -73,16 +81,18 @@ body {
   margin-bottom: 1rem;
 }
 .form-button {
-  background: #69d2e7;
+  background: gray;
   border: 1px solid #ddd;
   color: #ffffff;
   padding: 10px;
   width: 100%;
   text-transform: uppercase;
 }
-.form-button:hover {
-  background: #69c8e7;
+
+.form-button-active {
+  background: green;
 }
+
 .form-header {
   text-align: center;
   margin-bottom: 2rem;
