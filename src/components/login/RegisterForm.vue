@@ -1,7 +1,7 @@
 <template>
   <div class="wrap">
     <div class="login">
-      <form class="register-form" action="#" @submit.prevent="register">
+      <form class="register-form" action="#" >
         <div class="form-header">
           <h3>OutStagram</h3>
         </div>
@@ -10,18 +10,19 @@
           <input type="email" class="form-input" placeholder="이메일" v-model="email" />
         </div>
         <div class="form-group">
-          <input type="text" class="form-input" placeholder="닉네임" v-model="nickname"/>
+          <input type="text" class="form-input" placeholder="닉네임" v-model="nickname" />
         </div>
         <!--Password Input-->
         <div class="form-group">
-          <input type="password"  class="form-input" placeholder="비밀번호" v-model="password" />
+          asdasd
+          <input type="password" class="form-input" placeholder="비밀번호" v-model="password" />
         </div>
         <div class="form-group">
           <input type="password" class="form-input" placeholder="비밀번호 재입력" />
         </div>
         <!--Login Button-->
         <div class="form-group">
-          <button disabled class="form-button" type="text">가입하기</button>
+          <button class="form-button" type="submit">가입하기</button>
         </div>
       </form>
     </div>
@@ -29,16 +30,29 @@
 </template>
 
 <script>
+import { required, minLength, between } from "vuelidate/lib/validators";
+
 export default {
   name: "register-form",
   data() {
     return {
-      email : '',
-      nickname : '',
-      password : '',
-
+      email: "",
+      nickname: "",
+      password: ""
+    };
+  },
+  validations: {
+    email: {
+      required
+    },
+    nickname : {
+      required
+    },
+    password : {
+      required
     }
-  }
+  },
+  methods: {}
 };
 </script>
 
