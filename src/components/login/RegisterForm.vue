@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import { required, minLength, between } from "vuelidate/lib/validators";
+import { required,email,sameAs, minLength, between } from "vuelidate/lib/validators";
 
 export default {
   name: "register-form",
@@ -43,13 +43,17 @@ export default {
   },
   validations: {
     email: {
-      required
+      required,
+      email
     },
     nickname : {
       required
     },
     password : {
       required
+    },
+    repeatPassword: {
+      sameAsPassword: sameAs('password')
     }
   },
   methods: {}
@@ -90,6 +94,7 @@ body {
   border: 1px solid #eeeeee;
   padding: 12px;
   width: 100%;
+  
 }
 .form-group {
   margin-bottom: 1rem;
@@ -114,4 +119,29 @@ body {
 .form-footer {
   text-align: center;
 }
+
+.form-group--alert,
+.form-group--error {
+  animation-name: shakeError;
+  animation-fill-mode: forwards;
+  animation-duration: .6s;
+  animation-timing-function: ease-in-out; }
+
+@keyframes shakeError {
+  0% {
+    transform: translateX(0); }
+  15% {
+    transform: translateX(0.375rem); }
+  30% {
+    transform: translateX(-0.375rem); }
+  45% {
+    transform: translateX(0.375rem); }
+  60% {
+    transform: translateX(-0.375rem); }
+  75% {
+    transform: translateX(0.375rem); }
+  90% {
+    transform: translateX(-0.375rem); }
+  100% {
+    transform: translateX(0); } }
 </style>
