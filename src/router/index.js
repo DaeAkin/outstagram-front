@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Register from '../views/Register.vue'
+import Feed from '../views/Feed.vue'
 
 
 Vue.use(VueRouter)
@@ -16,6 +17,11 @@ Vue.use(VueRouter)
     path: '/register',
     name: 'register',
     component: Register
+  },
+  {
+    path: '/feed',
+    name: 'feed',
+    component: Feed
   },
   {
     path: '/about',

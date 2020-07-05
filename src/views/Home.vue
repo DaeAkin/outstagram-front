@@ -1,25 +1,24 @@
 <template>
   <div id="home">
-    
     <div class="main">
       <div class="wrap">
         <div class="iphone">
           <div class="change-image">
-          <Silder/>
+            <Silder />
           </div>
         </div>
         <div class="login">
-          <form class="login-form" action>
+          <form class="login-form" action @submit.prevent="login">
             <div class="form-header">
               <h3>OutStagram</h3>
             </div>
             <!--Email Input-->
             <div class="form-group">
-              <input type="text" class="form-input" placeholder="email@example.com" />
+              <input type="text" class="form-input" placeholder="email@example.com" v-model="email" />
             </div>
             <!--Password Input-->
             <div class="form-group">
-              <input type="password" class="form-input" placeholder="password" />
+              <input type="password" class="form-input" placeholder="password" v-model="password" />
             </div>
             <!--Login Button-->
             <div class="form-group">
@@ -27,11 +26,9 @@
             </div>
             <div class="form-footer">
               계정이 없으신가요?
-           <router-link :to="{name : 'register'}">가입하기</router-link>
+              <router-link :to="{name : 'register'}">가입하기</router-link>
             </div>
-            <div class="form-footer">
-              비밀번호를 잊으셨나요?
-            </div>
+            <div class="form-footer">비밀번호를 잊으셨나요?</div>
           </form>
         </div>
       </div>
@@ -40,13 +37,30 @@
 </template>
 
 <script>
-
-import Silder from "./Slider"
+import Silder from "./Slider";
 
 export default {
   name: "Home",
   components: {
     Silder
+  },
+  data() {
+    return {
+      email: "",
+      password: ""
+    };
+  },
+  methods: {
+    login() {
+      this.$store
+        .dispatch("retrieveToken", {
+          email: this.email,
+          password: this.password
+        })
+        .then(response => {
+          this.$router.push({ name: "feed" });
+        });
+    }
   }
 };
 </script>
@@ -54,8 +68,8 @@ export default {
 
 <style scoped>
 .change-image {
-    margin: 99px 0 0 151px;
-    position: relative;
+  margin: 99px 0 0 151px;
+  position: relative;
 }
 #home {
   width: 100%;
