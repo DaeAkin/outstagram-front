@@ -8,3 +8,6 @@
 
 https://github.com/DaeAkin/outstagram
 
+
+## TODO
+- Vuex 공부하기

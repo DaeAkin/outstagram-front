@@ -1,20 +1,20 @@
 <template>
   <div class="wrap">
     <div class="login">
-      <form class="register-form" action="#" >
+      <form class="register-form" action="#" @submit.prevent="registerUser">
         <div class="form-header">
           <h3>OutStagram</h3>
         </div>
         <!--Email Input-->
         <div class="form-group">
           <input type="email" class="form-input" placeholder="이메일" v-model="email" />
+           <div class="error" v-if="!$v.email.required">이메일을 입력해주세요.</div>
         </div>
         <div class="form-group">
           <input type="text" class="form-input" placeholder="닉네임" v-model="nickname" />
         </div>
         <!--Password Input-->
         <div class="form-group">
-          asdasd
           <input type="password" class="form-input" placeholder="비밀번호" v-model="password" />
         </div>
         <div class="form-group">
@@ -22,7 +22,7 @@
         </div>
         <!--Login Button-->
         <div class="form-group">
-          <button class="form-button" type="submit">가입하기</button>
+          <button class="form-button" type="submit" >가입하기</button>
         </div>
       </form>
     </div>
@@ -56,11 +56,25 @@ export default {
       sameAsPassword: sameAs('password')
     }
   },
-  methods: {}
+  methods: {
+    registerUser() {
+      
+      this.$store.dispatch('registerUser', {
+        email : this.email,
+        nickname : this.nickname,
+        password : this.password
+      })
+    }
+  }
 };
 </script>
 
 <style scoped>
+.error { 
+  font-size: 0.7rem;
+  color : red;
+  margin: 0.5rem;
+}
 * {
   margin: 0;
   padding: 0;

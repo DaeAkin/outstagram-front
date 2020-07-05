@@ -1,17 +1,23 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import axios from 'axios'
+
+
 
 Vue.use(Vuex)
-
+//안됨.. 나중에 해결 Vuex 공부하기
 export default new Vuex.Store({
   state: {
   },
   mutations: {
+    registerUser() {
+
+    }
+
   },
   actions: {
     registerUser(context,registerInfo) { 
-      axios.post('/api/loginservice/user/join', {
+      alert("a")
+      axios.post('/api/user/join', {
         email : registerInfo.email,
         nickname : registerInfo.nickname,
         password : registerInfo.password
@@ -20,7 +26,6 @@ export default new Vuex.Store({
         console.log(response)
       })
     }
-    
   },
   modules: {
   }
